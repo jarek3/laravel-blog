@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
 use Database;
 
-class User extends Authenticatable
+class UserOld extends Authenticatable
 {
     use Notifiable;
 
