@@ -1,4 +1,4 @@
-div class="col-xs-9">
+<div class="col-xs-9">
 <div class="box">
     <div class="box-body ">
 
