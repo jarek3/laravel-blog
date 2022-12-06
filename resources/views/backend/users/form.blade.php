@@ -38,12 +38,27 @@
                 @endif
             </div>
 
+            <div class="form-group {{$errors->has('role') ? 'has-error' : ''}}">
+                {!! Form::label('role') !!}
+                @if($user->exists && $user->id == config('cms.default_user_id'))
+                    {!! Form::hidden('role', $user->roles->first()->id) !!}
+                    <p class="form-control-static">{{$user->roles->first()->display_name}}</p>
+                @else
+{{--                {!! Form::select('role', [1 => 'Admin', 2 => 'Editor', 3 => 'Author'], null, ['class'=>'form-control']) !!}--}}
+                {!! Form::select('role', App\Models\Role::pluck('display_name', 'id'), $user->exists ? $user->roles->first()->id : null, ['class'=>'form-control', 'placeholder'=>'Choose a role']) !!}
+                @endif
+
+                @if($errors->has('role'))
+                    <span class="help-block">{{$errors->first('role')}}</span>
+                @endif
+            </div>
+
         </div>
 
         <!-- /.box-body -->
         <div class="box-footer">
             <button type="submit" class="btn btn-primary">{{$user->exists ? 'Update' : 'Save'}}</button>
-            <a href="{{'route(backend.users.index)'}}" class="btn btn-default">Cancel</a>
+            <a href="{{route('backend.users.index')}}" class="btn btn-default">Cancel</a>
         </div>
 
     </div>
