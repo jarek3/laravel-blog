@@ -138,6 +138,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         //Laratrust\LaratrustServiceProvider::class,    //only Laravel <5.6
+        Barryvdh\Debugbar\ServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */
@@ -196,6 +197,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         //'Laratrust'   => Laratrust\LaratrustFacade::class, //only Laravel <5.6
+        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

@@ -6,33 +6,23 @@
     <div class="row">
         <div class="col-md-8">
             @if(!$posts->count())
-            <div class="alert alert-warning">
-                <p>Nothing Found</p>
-            </div>
+                <div class="alert alert-warning">
+                    <p>Nothing Found</p>
+                </div>
             @else
 
-                @if(isset($categoryName))
-                    <div class="alert alert-info">
-                        <p>Category:<strong>{{$categoryName}}</strong></p>
-                    </div>
-                @endif
+                @include('blog.alert')
 
-                @if(isset($authorName))
-                    <div class="alert alert-info">
-                        <p>Author:<strong>{{$authorName}}</strong></p>
-                    </div>
-                @endif
+            @foreach($posts as $post)
 
-                @foreach($posts as $post)
-
-                <article class="post-item">
-                    @if ($post->image_url)
-                        <div class="post-item-image">
-                            <a href="{{route('blog.show', $post->slug)}}">
-                                <img src="{{$post->image_url}}" alt="">
-                            </a>
-                        </div>
-                    @endif
+            <article class="post-item">
+            @if ($post->image_url)
+                <div class="post-item-image">
+                    <a href="{{route('blog.show', $post->slug)}}">
+                        <img src="{{$post->image_url}}" alt="">
+                    </a>
+                </div>
+            @endif
                     <div class="post-item-body">
                         <div class="padding-10">
                             <h2><a href="{{route('blog.show', $post->slug)}}">{{$post->title}}</a></h2>
@@ -59,7 +49,7 @@
             @endif
             <nav>
 
-            {{ $posts->links() }}
+            {{ $posts->appends(request()->only(['term']))->links() }}
 
             </nav>
         </div>
