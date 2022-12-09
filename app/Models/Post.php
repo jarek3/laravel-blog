@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Database;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Tag;
 
 class Post extends Model
 {
@@ -27,6 +28,12 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
 
     public function setPublishedAtAttribute($value)
     {
@@ -77,6 +84,16 @@ class Post extends Model
     public function getExcerptHtmlAttribute($value)
     {
         return $this->excerpt ? Str::markdown(e($this->excerpt)) : NULL;
+    }
+
+    public function getTagsHtmlAttribute($value)
+    {
+        $anchors = [];
+        foreach($this->tags as $tag)
+        {
+            $anchors[] = '<a href="' . route('tag', $tag->slug) .'">'. $tag->name . '</a>';
+        }
+        return implode(", ", $anchors);
     }
 
     public function dateFormatted ($showTimes= false)
@@ -135,14 +152,14 @@ class Post extends Model
         // check if any term entered
         if ($term) {
             $query -> where(function ($q) use ($term) {
-//                $q -> whereHas('author', function ($qr) use ($term)
-//                {
-//                    $qr ->where('name', 'LIKE', "%{$term}%");
-//                });
-//                $q -> orwhereHas('category', function ($qr) use ($term)
-//                {
-//                    $qr ->where('title', 'LIKE', "%{$term}%");
-//                });
+                $q -> whereHas('author', function ($qr) use ($term)
+                {
+                    $qr ->where('name', 'LIKE', "%{$term}%");
+                });
+                $q -> orWhereHas('category', function ($qr) use ($term)
+                {
+                    $qr ->where('title', 'LIKE', "%{$term}%");
+                });
                 $q -> orWhere('title', 'LIKE', "%{$term}%");
                 $q -> orWhere('excerpt', 'LIKE', "%{$term}%");
             });
