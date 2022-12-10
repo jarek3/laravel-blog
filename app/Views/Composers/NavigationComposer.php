@@ -14,6 +14,8 @@ class NavigationComposer
         $this->composeTags($view);
 
         $this->composePopularPosts($view);
+
+        $this->composeArchives($view);
     }
 
     private function composeCategories(View $view)
@@ -27,9 +29,16 @@ class NavigationComposer
 
     public function composeTags(View $view)
     {
-        $tags=Tag::has('posts')->get();
+        $tags = Tag::has('posts')->get();
         $view->with('tags', $tags);
     }
+
+    public function composeArchives(View $view)
+    {
+        $archives =Post::archives();
+        $view->with('archives', $archives);
+    }
+
 
     private function composePopularPosts(View $view)
     {

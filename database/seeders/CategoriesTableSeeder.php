@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -18,42 +20,44 @@ class CategoriesTableSeeder extends Seeder
 
 
         DB ::table('categories') -> insert([
+
             [
-                'title' => 'Web Design',
-                'slug' => 'web-design'
+                'title' => 'Uncategorized',
+                'slug' => 'uncategorized'
+            ],
+
+
+            [
+                'title' => 'Tips and Tricks',
+                'slug' => 'tips-and-tricks'
             ],
 
             [
-                'title' => 'Web Programing',
-                'slug' => 'web-web-programing'
+                'title' => 'Build Apps',
+                'slug' => 'build-apps'
             ],
 
             [
-                'title' => 'Internet',
-                'slug' => 'internet'
+                'title' => 'News',
+                'slug' => 'news'
             ],
 
             [
-                'title' => 'Social Marketing',
-                'slug' => 'social-marketing'
+                'title' => 'Freebies',
+                'slug' => 'freebies'
             ],
-
-            [
-                'title' => 'Photography',
-                'slug' => 'photography'
-            ],
-
 
         ]);
 
         // update the posts data
-        for ($post_id = 1; $post_id <= 10; $post_id++)
+        foreach (Post::pluck('id') as $postId)      /*for ($post_id = 1; $post_id <= 10; $post_id++)*/
         {
-            $category_id = rand(1, 5);
+            $categories = Category::pluck('id');
+            $categoryId = $categories [rand(0, $categories->count()-1)];
 
             DB::table('posts')
-                ->where('id', $post_id)
-                ->update(['category_id' => $category_id]);
+                ->where('id', $postId)
+                ->update(['category_id' => $categoryId]);
         }
     }
 }

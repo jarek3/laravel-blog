@@ -19,16 +19,16 @@
             // reset the posts table
             DB::table('posts')->truncate();
 
-            // generate 10 dummy posts data
+            // generate 30 dummy posts data
             $posts=[];
             $faker=Factory::create();
-            $date=Carbon\Carbon::create(2022,10,31,4);
+            $date=Carbon\Carbon::now()->modify('-1 year')/*create(2022,10,31,4)*/;
 
 
-            for($i=1; $i<=10; $i++)
+            for($i=1; $i<=36; $i++)
             {
                 $image="Post_Image_".rand(1,5).".jpg";
-                $date->addDays(1);
+                $date->addDays(10);
                 $publishedDate=clone($date);
                 $createdDate=clone($date);
                 $posts[]=
@@ -42,7 +42,7 @@
                         'created_at'   => $createdDate,
                         'updated_at'   => $createdDate,
                         //'published_at'=>$i>5 && rand(0, 1)==0 ? NULL : $publishedDate->addDays($i + 4)
-                        'published_at' => $i < 5 ? $publishedDate : ( rand(0, 1) == 0 ? NULL : $publishedDate->addDays(4) ),
+                        'published_at' => $i < 30 ? $publishedDate : ( rand(0, 1) == 0 ? NULL : $publishedDate->addDays(4) ),
                         'view_count'   => rand(1, 10) * 10
                     ];
 
