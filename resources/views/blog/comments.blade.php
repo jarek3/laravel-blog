@@ -16,9 +16,9 @@
             </li>
             @endforeach
         </ul>
+
         <nav>
         {!! $postComments->links() !!}
-
         </nav>
     </div>
 
