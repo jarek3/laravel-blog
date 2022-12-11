@@ -3,7 +3,7 @@
     <h3><i class="fa fa-comments"></i>{{$post->commentsNumber('Comment')}} </h3>
     <div class="comment-body padding-10">
         <ul class="comments-list">
-            @foreach($post->comments as $comment)
+            @foreach($postComments as $comment)
             <li class="comment-item">
                 <div class="comment-heading clearfix">
                     <div class="comment-author-meta">
@@ -16,7 +16,10 @@
             </li>
             @endforeach
         </ul>
+        <nav>
+        {!! $postComments->links() !!}
 
+        </nav>
     </div>
 
     <div class="comment-footer padding-10">
