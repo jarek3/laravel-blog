@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CommentStoreRequest;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
 {
-    public function store(Post $post, Request $request)
+    public function store(Post $post, CommentStoreRequest $request)
     {
 //       $data = $request->all();
 //       $data['post_id'] = $post->id;
