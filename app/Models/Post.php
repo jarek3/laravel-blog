@@ -45,6 +45,11 @@ class Post extends Model
        return $commentsNumber ." ". Str::plural($label, $commentsNumber);
     }
 
+    public function createComment(array $data)
+    {
+        $this->comments()->create($data);
+    }
+
 
     public function setPublishedAtAttribute($value)
     {

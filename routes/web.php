@@ -1,7 +1,8 @@
 <?php
 
 	use App\Http\Controllers\BlogController;
-	use Illuminate\Support\Facades\Auth;
+    use App\Http\Controllers\CommentsController;
+    use Illuminate\Support\Facades\Auth;
 	use Illuminate\Support\Facades\Route;
     //use App\Http\Controllers\Backend\BlogController;
 
@@ -21,6 +22,9 @@ Route::get('/', [BlogController::class, 'index',
 
 Route::get('/blog/{post}', [BlogController::class, 'show',
 ])->name('blog.show');
+
+Route::post('/blog/{post}/comments', [CommentsController::class, 'store'
+])->name('blog.comments');
 
 Route::get('/category/{category}', [BlogController::class, 'category',
 ])->name('category');
