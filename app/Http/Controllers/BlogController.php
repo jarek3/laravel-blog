@@ -16,7 +16,7 @@ class BlogController extends Controller
     {
 
 //        \DB::enableQueryLog();
-        $posts=Post::with('author', 'tags', 'category')
+        $posts=Post::with('author', 'tags', 'category', 'comments')
                    ->latestFirst()
                    ->published()
                    ->filter(request()->only(['term', 'year', 'month']))
@@ -39,7 +39,7 @@ class BlogController extends Controller
 //            ->simplePaginate($this->limit);
 
         $posts=$category->posts()
-                        ->with('author', 'tags')
+                        ->with('author', 'tags', 'comments')
                         ->latestFirst()
                         ->published()
                         ->simplePaginate($this->limit);
@@ -54,7 +54,7 @@ class BlogController extends Controller
         $tagName = $tag->title;
 
         $posts=$tag->posts()
-            ->with('author', 'category')
+            ->with('author', 'category', 'comments')
             ->latestFirst()
             ->published()
             ->simplePaginate($this->limit);
@@ -67,7 +67,7 @@ class BlogController extends Controller
     {
         $authorName = $author->name;
         $posts=$author->posts()
-            ->with('category', 'tags')
+            ->with('category', 'tags', 'comments')
             ->latestFirst()
             ->published()
             ->simplePaginate($this->limit);
