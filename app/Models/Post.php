@@ -50,6 +50,27 @@ class Post extends Model
         $this->comments()->create($data);
     }
 
+    public function createTags($tagString)
+    {
+        $tags = explode(",", $tagString);
+        $tagIds = [];
+        foreach ($tags as $tag)
+        {
+            $newTag = new Tag();
+//            $newTag->name = ucwords(trim($tag));
+//            $newTag->slug = Str::slug($tag);
+            $newTag = Tag::firstOrCreate(
+                ['slug' => Str::slug($tag)], ['name' => trim($tag)]
+            );
+            $newTag->save();
+            $tagIds[] = $newTag->id;
+        }
+        $this->tags()->detach();
+        $this->tags()->attach($tagIds);
+
+        // simpler way is to use the sync method like this:
+//        $this->tags()->sync($tagIds);
+    }
 
     public function setPublishedAtAttribute($value)
     {
@@ -110,6 +131,11 @@ class Post extends Model
             $anchors[] = '<a href="' . route('tag', $tag->slug) .'">'. $tag->name . '</a>';
         }
         return implode(", ", $anchors);
+    }
+
+    public function getTagsListAttribute()
+    {
+        return $this->tags->pluck('name');
     }
 
     public function dateFormatted ($showTimes= false)

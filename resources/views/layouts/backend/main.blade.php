@@ -23,6 +23,7 @@
 {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('backend/css/custom.css')}}">
+    @yield('style')
 
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{asset('../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
@@ -43,6 +44,7 @@
 
 
     @yield('content')
+
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">

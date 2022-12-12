@@ -96,8 +96,10 @@ class BlogController extends BackendController
     public function store(Requests\PostRequest $request)
     {
         $data = $this->handleRequest($request);
+        $newPost = $request->user()->posts()->create($data);
+        $newPost->createTags($data["post_tags"]);
 
-        $request->user()->posts()->create($data);
+//        $request->user()->posts()->create($data);
 
         return redirect('/backend/blog')->with('message', 'Your post was created successfully!');
     }
@@ -171,6 +173,7 @@ class BlogController extends BackendController
         $oldImage = $post->image;
         $data=$this->handleRequest($request);
         $post->update($data);
+        $post->createTags($data['post_tags']);
         if ($oldImage !== $post->image)
         {
           $this->removeImage($oldImage);
