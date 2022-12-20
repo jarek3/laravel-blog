@@ -156,7 +156,7 @@ class BlogController extends BackendController
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::with('tags')->findOrFail($id);
         return view("backend.blog.edit", compact('post'));
     }
 
@@ -169,9 +169,10 @@ class BlogController extends BackendController
      */
     public function update(Requests\PostRequest $request, $id)
     {
-        $post=Post::findOrFail($id);
+        $post     = Post::findOrFail($id);
         $oldImage = $post->image;
-        $data=$this->handleRequest($request);
+        $data     = $this->handleRequest($request);
+
         $post->update($data);
         $post->createTags($data['post_tags']);
         if ($oldImage !== $post->image)

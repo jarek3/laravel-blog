@@ -1,9 +1,11 @@
 <?php
 
-	use App\Http\Controllers\BlogController;
+    use App\Http\Controllers\Backend\ContactController;
+    use App\Http\Controllers\BlogController;
     use App\Http\Controllers\CommentsController;
     use Illuminate\Support\Facades\Auth;
-	use Illuminate\Support\Facades\Route;
+    use Illuminate\Support\Facades\Route;
+
     //use App\Http\Controllers\Backend\BlogController;
 
 	/*
@@ -58,3 +60,9 @@ Route::get('/backend/users/confirm/{users}', [App\Http\Controllers\Backend\Users
 Route::resource('/backend/users',  App\Http\Controllers\Backend\UsersController::class, ['as' => 'backend']);
 
 Route::resource('/backend/tags', App\Http\Controllers\Backend\TagsController::class, ['as' => 'backend']);
+
+//Route::get('contact', [ContactController::class, 'show'])->name('show');
+//Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
+//Route::resource('/backend/contact', App\Http\Controllers\Backend\ContactController::class, ['as' => 'backend']);
+Route::get('/backend/contact', [App\Http\Controllers\Backend\ContactController::class, 'show'])->name('contact.show');
+Route::post('/backend/contact', [App\Http\Controllers\Backend\ContactController::class, 'store'])->name('contact.store');

@@ -11,6 +11,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+
 class CategoriesController extends BackendController
 {
     /**
@@ -70,7 +71,7 @@ class CategoriesController extends BackendController
     {
         $category = Category::findOrFail($id);
 
-        return view("backend.categories.edit", compact('category'));
+        return view("backend.categories.edit", compact('category', ));
     }
 
     /**

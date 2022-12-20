@@ -7,6 +7,6 @@
                                     'height' => 170
                                     ]
                     ],
-                    'default_category_id' => 15,
+                    'default_category_id' => 8,
                     'default_user_id' => 4,
             ];

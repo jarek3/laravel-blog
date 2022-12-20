@@ -41,7 +41,8 @@
         "psr-4": {
             "Tests\\": "tests/"
         },
-        "files": ["app/Helpers/permissions.php"]
+        "files": ["app/Helpers/permissions.php",
+                  "app/Helpers/date.php"]
     },
     "scripts": {
         "post-autoload-dump": [
