@@ -68,7 +68,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="#" class="btn btn-default">Cancel</a>
+            <a href="{{ route('contact.show') }}" class="btn btn-default">Cancel</a>
         </div>
 
     </div>
