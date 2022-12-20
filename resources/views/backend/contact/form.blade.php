@@ -40,7 +40,7 @@
             </div>
 
 
-            <div class="form-group ">
+            <div class="form-group {{$errors->has('body') ? 'has-error' : ''}}">
                 {!! Form::label('body') !!}
                 {!! Form::textarea('body', null, ['rows' => 5, 'class' => 'form-control', 'placeholder' => 'Write your message here']) !!}
 
@@ -54,7 +54,7 @@
                 <input type="number" name="year" id="year" class="form-control" required />
             </div>--}}
 
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-4 {{$errors->has('year') ? 'has-error' : ''}}">
                 {!! Form::label('antispam') !!}
                 {!! Form::number('year', null, ['class' => 'form-control', 'placeholder' => 'Current year']) !!}
 
