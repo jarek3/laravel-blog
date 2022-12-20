@@ -13,14 +13,14 @@
     {
         public function store(ContactRequest $request)
         {
-//            $request -> validate([
-//                'name' => 'required',
-//                'email' => 'required|email',
-//                'phone' => 'required|numeric',
-//                'subject' => 'required',
-//                'message' => 'required',
-//            ]);
-//            Mail::to(env('MAIL_TO'))->send(new ContactMessage($request->input('email'), $request->input('message')));
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'phone' => 'required|numeric',
+                'subject' => 'required',
+                'body' => 'required',
+            ]);
+
             $input = $request->all();
 
             Contact::create($input);
