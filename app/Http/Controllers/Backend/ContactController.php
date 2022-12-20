@@ -43,8 +43,6 @@
 
 //            return redirect()->route('contact.show');
 
-
-
         public function show(): View
         {
             return view('backend/contact.show');

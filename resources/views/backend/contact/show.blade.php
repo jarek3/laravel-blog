@@ -21,11 +21,13 @@
 
         <!-- Main content -->
         <section class="content">
+
             @if(session('message'))
                 <div class="alert alert-info">
                     {{session('message')}}
                 </div>
             @endif
+
             <div class="row">
                 {!! Form::model(
                 [
