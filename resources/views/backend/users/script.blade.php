@@ -1,7 +1,6 @@
 @section('script')
-    <script type="text/javascript" >
-
-        $('#title').on('blur', function() {
+    <script type="text/javascript">
+        $('#name').on('blur', function() {
             var theTitle = this.value.toLowerCase().trim(),
                 slugInput = $('#slug'),
                 theSlug = theTitle.replace(/&/g, '-and-')
@@ -11,7 +10,5 @@
 
             slugInput.val(theSlug);
         });
-
     </script>
 @endsection
-

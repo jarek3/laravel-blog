@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -37,5 +38,14 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if($e instanceOf AuthorizationException){
+            //return response()->view('errors.authorization-error',[], 403);
+            return redirect()->back()->with(['error-message' => 'You cannot delete default category!'], 403);
+        }
+        return parent::render($request, $e);
     }
 }

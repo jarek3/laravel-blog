@@ -41,6 +41,6 @@
     </div>
 @endsection
 
-
+@include('backend.users.script')
 
 

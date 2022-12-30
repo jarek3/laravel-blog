@@ -13,8 +13,7 @@ class CategoryDestroyRequest extends FormRequest
      */
     public function authorize()
     {
-        return !($this->route('category') == config('cms.default_category_id'));
-
+       return !($this->route('category') == config('cms.default_category_id'));
     }
 
     public function forbiddenResponse()

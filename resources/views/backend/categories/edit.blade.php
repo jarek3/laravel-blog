@@ -41,7 +41,7 @@
     </div>
 @endsection
 
-    @include('backend.blog.script')
+    @include('backend.categories.script')
 
 
 
