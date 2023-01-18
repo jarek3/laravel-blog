@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="the-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="{{url('home')}}">Blog</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="{{url('/home')}}">About</a></li>
                     <li><a href="{{url('backend/contact') }}">Contact</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
