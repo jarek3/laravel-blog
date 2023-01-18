@@ -12,6 +12,7 @@ class ContactMessage extends Mailable
     use Queueable, SerializesModels;
 
     protected $message;
+    
     /**
      * Create a new message instance.
      *
@@ -33,7 +34,7 @@ class ContactMessage extends Mailable
         return $this->markdown('contact-mail',
         [
         'message' => $this->message,
-    ])->subject('Email z kontaktního formuláře');
+        ])->subject('Email z kontaktního formuláře');
 
     }
 }

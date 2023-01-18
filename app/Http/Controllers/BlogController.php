@@ -54,10 +54,10 @@ class BlogController extends Controller
         $tagName = $tag->title;
 
         $posts=$tag->posts()
-            ->with('author', 'category', 'comments')
-            ->latestFirst()
-            ->published()
-            ->simplePaginate($this->limit);
+              ->with('author', 'category', 'comments')
+              ->latestFirst()
+              ->published()
+              ->simplePaginate($this->limit);
         return view("blog.index", compact('posts', 'tagName'));
 
     }
@@ -67,10 +67,10 @@ class BlogController extends Controller
     {
         $authorName = $author->name;
         $posts=$author->posts()
-            ->with('category', 'tags', 'comments')
-            ->latestFirst()
-            ->published()
-            ->simplePaginate($this->limit);
+              ->with('category', 'tags', 'comments')
+              ->latestFirst()
+              ->published()
+              ->simplePaginate($this->limit);
         return view("blog.index", compact('posts', 'authorName'));
     }
 

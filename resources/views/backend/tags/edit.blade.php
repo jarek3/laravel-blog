@@ -24,11 +24,12 @@
         <section class="content">
             <div class="row">
                 {!! Form::model($tag, [
-                    'method' => 'PUT',
-                    'route'  => ['backend.tags.update', $tag->id],
-                    'files'  => TRUE,
-                    'id' => 'post-form'
-                ]) !!}
+                                      'method' => 'PUT',
+                                      'route'  => ['backend.tags.update', $tag->id],
+                                      'files'  => TRUE,
+                                      'id' => 'post-form'
+                                      ]) 
+                !!}
 
                 @include('backend.tags.form')
 

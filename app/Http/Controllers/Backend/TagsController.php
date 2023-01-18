@@ -21,7 +21,7 @@ class TagsController extends BackendController
      */
     public function index()
     {
-        $tags = Tag::with('posts')->orderBy('name')->paginate($this->limit);
+        $tags      = Tag::with('posts')->orderBy('name')->paginate($this->limit);
         $tagsCount = Tag::count();
 
         return view('backend.tags.index', compact('tags', 'tagsCount'));

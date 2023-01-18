@@ -10,6 +10,7 @@
                 <span class="help-block">{{ $errors->first('title') }}</span>
             @endif
         </div>
+
         <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }}">
             {!! Form::label('slug') !!}
             {!! Form::text('slug', null, ['class' => 'form-control']) !!}
@@ -20,6 +21,7 @@
         </div>
     </div>
     <!-- /.box-body -->
+    
     <div class="box-footer">
         <button type="submit" class="btn btn-primary">{{ $category->exists ? 'Update' : 'Save' }}</button>
         <a href="{{ route('backend.categories.index') }}" class="btn btn-default">Cancel</a>

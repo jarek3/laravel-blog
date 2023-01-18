@@ -88,7 +88,7 @@ class UsersController extends BackendController
     public function update(UserUpdateRequest $request, $id)
     {
         $user = User::findOrFail($id);
-        $user ->update($request->all());
+        $user->update($request->all());
         $user->detachRoles();
         $user->attachRole($request->role);
 

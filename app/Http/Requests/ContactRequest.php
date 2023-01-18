@@ -25,15 +25,14 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            //
-            'name' => ['required'],
-            'email' => ['required', 'email'],
-            'phone' => ['required', 'numeric'],
-            'subject' => ['required'],
-            'body' => ['required', 'min:5'],
-            'year' => ['required', Rule::in(date('Y')),
-            ],
+            
+                'name'    => ['required'],
+                'email'   => ['required', 'email'],
+                'phone'   => ['required', 'numeric'],
+                'subject' => ['required'],
+                'body'    => ['required', 'min:5'],
+                'year'    => ['required', Rule::in(date('Y')),],                
 
-        ];
+                ];
     }
 }

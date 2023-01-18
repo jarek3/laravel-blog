@@ -31,11 +31,12 @@
             <div class="row">
                 {!! Form::model(
                 [
-               'method'=>'POST',
-               'route' =>'contact.show',
-               'files' => TRUE,
-               'id' => 'contact-form'
-                ]) !!}
+                'method'=>'POST',
+                'route' =>'contact.show',
+                'files' => TRUE,
+                'id' => 'contact-form'
+                ]) 
+                !!}
 
             @include('backend.contact.form')
 

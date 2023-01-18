@@ -17,10 +17,12 @@ class UserDestroyRequest extends FormRequest
 
     }
 
-    public function forbiddenResponse()
-    {
-        return redirect()->back()->with('error-message', 'You cannot delete default user or delete yourself!');
-    }
+    //Starting with Laravel 5.4, the forbiddenResponse method is removed
+    
+ //   public function forbiddenResponse()
+ //   {
+ //       return redirect()->back()->with('error-message', 'You cannot delete default user or delete yourself!');
+ //   }
 
     /**
      * Get the validation rules that apply to the request.

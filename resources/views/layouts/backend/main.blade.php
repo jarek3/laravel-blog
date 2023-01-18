@@ -48,10 +48,9 @@
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.3.6
+            <b>Version</b> 8.83.25
         </div>
-        <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; Laravel was used to develop this application.</strong> 
     </footer>
 
 </div>

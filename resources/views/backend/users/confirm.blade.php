@@ -24,9 +24,10 @@
             <div class="row">
                 {!! Form::model($user,
                 [
-               'method'=>'DELETE',
-               'route' =>['backend.users.destroy', $user->id]
-                ]) !!}
+                'method'=>'DELETE',
+                'route' =>['backend.users.destroy', $user->id]
+                ]) 
+                !!}
 
                 <div class="col-xs-9">
                     <div class="box">

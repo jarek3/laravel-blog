@@ -15,6 +15,7 @@ use App\Models\Tag;
 class Post extends Model
 {
     use SoftDeletes;
+
     protected $fillable = ['title', 'slug', 'excerpt', 'body', 'published_at', 'category_id', 'image'];
     protected $dates = ['published_at'];
 
@@ -201,19 +202,20 @@ class Post extends Model
     public function scopeFilter($query, $filter)
     {
         if (isset($filter['month']) && $month = $filter['month'])
-        {
+          {   
             $query ->whereRaw('month(published_at) = ?', [$month]); //whereMonth('published_at', 'month')
-        }
+          }
 
         if (isset($filter['year']) && $year = $filter['year'])
-        {
+          {
             $query ->whereRaw('year(published_at) = ?' , [$year]); //whereYear('published_at', 'year')
-        }
+          }
 
         // check if any term entered
         if (isset($filter['term']) && $term = $filter['term'])
-            {
-            $query -> where(function ($q) use ($term) {
+          {
+            $query -> where(function ($q) use ($term) 
+              {
                 $q -> whereHas('author', function ($qr) use ($term)
                 {
                     $qr ->where('name', 'LIKE', "%{$term}%");
@@ -224,8 +226,8 @@ class Post extends Model
                 });
                 $q -> orWhere('title', 'LIKE', "%{$term}%");
                 $q -> orWhere('excerpt', 'LIKE', "%{$term}%");
-            });
-        }
+              });
+          }
 
     }
 }

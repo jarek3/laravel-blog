@@ -41,7 +41,7 @@
     </div>
 @endsection
 
-    @include('backend.categories.script')
+@include('backend.categories.script')
 
 
 

@@ -35,9 +35,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+                        'password',
+                        'remember_token',
+                        ];
 
     /**
      * The attributes that should be cast.
@@ -45,8 +45,8 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+                        'email_verified_at' => 'datetime',
+                       ];
 
     public function posts(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
@@ -55,9 +55,9 @@ class User extends Authenticatable
 
     public function gravatar()
     {
-        $email = $this->email;
+        $email   = $this->email;
         $default = asset("img/author.jpg");
-        $size = 100;
+        $size    = 100;
         //return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png";
     }

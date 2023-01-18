@@ -24,11 +24,12 @@
             <div class="row">
                 {!! Form::model($category,
                 [
-               'method'=>'PUT',
-               'route' =>['backend.categories.update', $category->id],
-               'files' => TRUE,
-               'id' => 'post-form'
-                ]) !!}
+                'method'=>'PUT',
+                'route' =>['backend.categories.update', $category->id],
+                'files' => TRUE,
+                'id'    => 'post-form'
+                ]) 
+                !!}
 
             @include('backend.categories.form')
 
@@ -41,7 +42,4 @@
     </div>
 @endsection
 
-    @include('backend.categories.script')
-
-
-
+@include('backend.categories.script')

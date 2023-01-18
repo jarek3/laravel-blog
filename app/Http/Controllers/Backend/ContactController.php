@@ -14,11 +14,11 @@
         public function store(ContactRequest $request)
         {
             $request->validate([
-                'name' => 'required',
-                'email' => 'required|email',
-                'phone' => 'required|numeric',
+                'name'    => 'required',
+                'email'   => 'required|email',
+                'phone'   => 'required|numeric',
                 'subject' => 'required',
-                'body' => 'required',
+                'body'    => 'required',
             ]);
 
             $input = $request->all();
@@ -27,11 +27,11 @@
 
             //  Send mail to admin
             Mail::send('contact-mail', array(
-                'name' => $input['name'],
-                'email' => $input['email'],
-                'phone' => $input['phone'],
+                'name'    => $input['name'],
+                'email'   => $input['email'],
+                'phone'   => $input['phone'],
                 'subject' => $input['subject'],
-                'body' => $input['body'],
+                'body'    => $input['body'],
             ), function($message) use ($request){
                 $message->from($request->email);
                 $message->to('admin@admin.com', 'Admin')->subject($request->get('subject'));

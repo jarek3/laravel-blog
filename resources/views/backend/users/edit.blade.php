@@ -24,11 +24,12 @@
             <div class="row">
                 {!! Form::model($user,
                 [
-               'method'=>'PUT',
-               'route' =>['backend.users.update', $user->id],
-               'files' => TRUE,
-               'id' => 'user-form'
-                ]) !!}
+                'method'=>'PUT',
+                'route' =>['backend.users.update', $user->id],
+                'files' => TRUE,
+                'id' => 'user-form'
+                ]) 
+                !!}
 
             @include('backend.users.form')
 

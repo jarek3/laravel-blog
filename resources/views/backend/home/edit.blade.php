@@ -24,10 +24,11 @@
                 @include('backend.partials.message')
                 {!! Form::model($user,
                 [
-               'method'=>'PUT',
-               'url' =>'/edit-account',
-               'id' => 'user-form'
-                ]) !!}
+                'method'=>'PUT',
+                'url' =>'/edit-account',
+                'id' => 'user-form'
+                ]) 
+                !!}
 
             @include('backend.users.form', ['hideRoleDropdown' => true])
 

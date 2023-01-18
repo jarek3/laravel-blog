@@ -14,6 +14,6 @@
     <div class="alert alert-info">
     {{$message}}
      <button type="submit" class="btn btn-sm btn-warning"><i class="fa fa-undo"></i>Undo</button>
-    {!! Form::close() !!}
+{!! Form::close() !!}
     </div>
 @endif

@@ -40,7 +40,7 @@ class BlogController extends BackendController
         }
         elseif ($status == 'scheduled')
         {
-            $posts = Post ::scheduled() -> with('category', 'author') -> latest() -> paginate($this -> limit);
+            $posts     = Post ::scheduled() -> with('category', 'author') -> latest() -> paginate($this -> limit);
             $postCount = Post ::scheduled() -> count();
         }
         elseif ($status == 'draft')
@@ -126,8 +126,8 @@ class BlogController extends BackendController
                 $thumbnail   = str_replace(".{$extension}", "_thumb.{$extension}", $fileName);
 
                 Image::make($destination . '/' . $fileName)
-                    ->resize($width, $height)
-                    ->save($destination . '/' . $thumbnail);
+                     ->resize($width, $height)
+                     ->save($destination . '/' . $thumbnail);
             }
 
             $data['image'] = $fileName;
