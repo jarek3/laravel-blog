@@ -61,9 +61,5 @@ Route::resource('/backend/users',  App\Http\Controllers\Backend\UsersController:
 
 Route::resource('/backend/tags', App\Http\Controllers\Backend\TagsController::class, ['as' => 'backend']);
 
-//Route::get('contact', [ContactController::class, 'show'])->name('show');
-//Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
-//Route::resource('/backend/contact', App\Http\Controllers\Backend\ContactController::class, ['as' => 'backend']);
-
 Route::get('/backend/contact', [App\Http\Controllers\Backend\ContactController::class, 'show'])->name('contact.show');
 Route::post('/backend/contact', [App\Http\Controllers\Backend\ContactController::class, 'store'])->name('contact.store');
