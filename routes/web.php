@@ -40,7 +40,7 @@ Route::get('/tag/{tag}', [BlogController::class, 'tag',
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('home');
-//Route::post('/logout', [App\Http\Controllers\Backend\HomeController::class, 'index'])->name('home');
+
 Route::get('/edit-account', [App\Http\Controllers\Backend\HomeController::class, 'edit'])->name('home');
 Route::put('/edit-account', [App\Http\Controllers\Backend\HomeController::class, 'update'])->name('home');
 
